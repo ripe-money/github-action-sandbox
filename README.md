@@ -1,0 +1,3 @@
+# A Sandbox Repo to experiment with Github Actions
+
+Using this repo to experiment with Github actions in `.github/workflows`. Github actions are only executed on Github, so they must be committed to the default branch (`main` here) and pushed to Github to see what they do. Iterative development will thus lead to lots of commits and pushes. Do those iterations here in this repo so actual product repos won't be polluted with lots of test commits.
