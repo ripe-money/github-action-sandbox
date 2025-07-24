@@ -10,14 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     # Run only if
     # 1. The comment was made on a PR.
-    # 2. The comment was made by @samkit-jain.
+    # 2. The comment was made by @chucklam.
     # 3. The comment was exactly "/merge" sans the quotes.
     # 4. The PR is open.
     if: |
       github.event.issue.pull_request &&
       github.event.comment.body == '/merge' &&
       !github.event.issue.closed_at &&
-      github.event.issue.state == 'open'
+      github.event.issue.state == 'open' &&
+      github.event.comment.user.login == 'chucklam'
 
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
