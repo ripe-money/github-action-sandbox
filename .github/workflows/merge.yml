@@ -1,0 +1,27 @@
+name: Override Merge
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  merge_comment:
+    name: Merge PR
+    runs-on: ubuntu-latest
+    # Run only if
+    # 1. The comment was made on a PR.
+    # 2. The comment was made by @samkit-jain.
+    # 3. The comment was exactly "/merge" sans the quotes.
+    # 4. The PR is open.
+    if: |
+      github.event.issue.pull_request &&
+      github.event.comment.body == '/merge' &&
+      !github.event.issue.closed_at &&
+      github.event.issue.state == 'open'
+
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v4
