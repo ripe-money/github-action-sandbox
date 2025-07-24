@@ -36,8 +36,8 @@ jobs:
         id: get-pr-details
         with:
           route: GET /repos/${{ github.repository }}/pulls/${{ github.event.issue.number }}
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Merge (rebase) the PR if it is allowed.
       - name: Merge the PR
