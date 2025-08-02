@@ -54,17 +54,10 @@ jobs:
             # Add your merge command here
             git config --global user.email "<>"
             git config --global user.name "GitHub Actions"
+            echo "Fetching latest changes..."
             git fetch origin
-            git checkout $HEAD_BRANCH
-            git pull origin $HEAD_BRANCH
-            git log
-            git checkout $BASE_BRANCH
-            git pull origin $BASE_BRANCH
-            git log
-            git status
-            git merge --ff-only main
-            git status
-            git push origin $BASE_BRANCH
+            echo "Show all branches..."
+            git branch
             echo "::set-output name=message::'PR merged in succesfully.'"
           else
             echo "🚫 The PR is not mergeable."
