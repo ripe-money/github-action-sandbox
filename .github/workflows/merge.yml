@@ -57,10 +57,12 @@ jobs:
             git fetch origin
             git checkout $HEAD_BRANCH
             git pull origin $HEAD_BRANCH
+            git log --pretty=format:"%h%x09%an%x09%ad%x09%s"
             git checkout $BASE_BRANCH
             git pull origin $BASE_BRANCH
+            git log --pretty=format:"%h%x09%an%x09%ad%x09%s"
             git status
-            git rebase $HEAD_BRANCH
+            git merge --ff-only main
             git status
             git push origin $BASE_BRANCH
             echo "::set-output name=message::'PR merged in succesfully.'"
