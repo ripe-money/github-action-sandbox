@@ -57,7 +57,6 @@ jobs:
             echo "Show all branches..."
             git branch
             git checkout $HEAD_BRANCH
-            git pull origin $HEAD_BRANCH
             git log -n 30 --pretty=format:"%h%x09%an%x09%ad%x09%s"
           else
             echo "🚫 The PR is not mergeable."
