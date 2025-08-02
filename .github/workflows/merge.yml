@@ -52,14 +52,10 @@ jobs:
           if [ "$MERGEABLE_STATUS" == "clean" ]; then
             echo "🔀 Merging the PR... from $HEAD_BRANCH to $BASE_BRANCH"
             # Add your merge command here
-            git config --global user.email "<>"
-            git config --global user.name "GitHub Actions"
             echo "Fetching latest changes..."
             git fetch origin
             echo "Show all branches..."
             git branch
-            echo "::set-output name=message::'PR merged in succesfully.'"
           else
             echo "🚫 The PR is not mergeable."
-            echo "::set-output name=message::'PR cannot be merged in.'"
           fi
