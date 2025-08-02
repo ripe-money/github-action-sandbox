@@ -54,6 +54,7 @@ jobs:
             # Add your merge command here
             git config --global user.email "<>"
             git config --global user.name "GitHub Actions"
+            git fetch origin
             git checkout $HEAD_BRANCH
             git pull origin $HEAD_BRANCH
             git checkout $BASE_BRANCH
