@@ -56,6 +56,9 @@ jobs:
             git fetch origin
             echo "Show all branches..."
             git branch
+            git checkout $HEAD_BRANCH
+            git pull origin $HEAD_BRANCH
+            git log
           else
             echo "🚫 The PR is not mergeable."
           fi
