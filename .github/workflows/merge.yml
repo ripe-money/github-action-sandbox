@@ -75,15 +75,10 @@ jobs:
             echo "🚫 The PR is not mergeable."
           fi
 
-      # Post a success/failure comment to the PR.
+      # Post a success comment to the PR.
       # https://graphite.dev/guides/how-to-post-comment-on-pr-github-actions
-      - name: Add comment to PR
+      - name: Add success comment to PR
+        if: ${{ success() }}
         uses: thollander/actions-comment-pull-request@v1
         with:
-          # message: 'Thank you for your pull request!'
-          message: |
-            {% if steps.merge-status.outputs.status == 'success' %}
-            ✅ The PR has been successfully merged from `${{ fromJson(steps.get-pr-details.outputs.data).head.ref }}` to `${{ fromJson(steps.get-pr-details.outputs.data).base.ref }}`.
-            {% else %}
-            🚫 PR cannot be merged in. Check the Actions execution tab for details.
-            {% endif %}
+          message: ${{ steps.merge-status.outputs.message }}
