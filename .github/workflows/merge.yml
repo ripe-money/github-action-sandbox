@@ -8,6 +8,8 @@ jobs:
   merge_comment:
     name: FF-Merge `main` into `prod` on `/merge` comment
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     # Run only if
     # 1. The comment was made on a PR.
     # 2. The comment was made by @chucklam.
