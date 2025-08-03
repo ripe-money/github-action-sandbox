@@ -57,10 +57,16 @@ jobs:
             # Add your merge command here
             echo "Fetching latest changes..."
             git fetch origin --unshallow
+            echo "Checking out main branch..."
+            git checkout main
+            git pull origin main
+            git log -n 30 --pretty=format:"%h%x09%an%x09%ad%x09%s"
+            echo "Checking out prod branch..."
+            git checkout prod
+            git pull origin prod
+            git log -n 30 --pretty=format:"%h%x09%an%x09%ad%x09%s"
             echo "Show all branches..."
             git branch
-            git checkout $HEAD_BRANCH
-            git log -n 30 --pretty=format:"%h%x09%an%x09%ad%x09%s"
           else
             echo "🚫 The PR is not mergeable."
           fi
