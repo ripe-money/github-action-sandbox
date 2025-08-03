@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Simple Hello World bash script
-echo "Hello, World!"
-
+# Our current setup has the `prod` branch as production and `main` as staging.
+# This script merges the `main` branch into the `prod` branch and pushes the changes
+# to the remote repository. I.e., it deploys the latest changes from `main` to `prod`.
+# The `prod` branch is protected, so this script should be run manually by the repo owner.
 git fetch
 git checkout main
 git pull origin main
