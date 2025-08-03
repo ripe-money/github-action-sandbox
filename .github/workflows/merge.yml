@@ -60,15 +60,23 @@ jobs:
             echo -e "\nChecking out main branch..."
             git checkout main
             git pull origin main
-            git log -n 30 --pretty=format:"%h%x09%an%x09%ad%x09%s"
+            git log -n 20 --pretty=format:"%h%x09%an%x09%ad%x09%s"
             echo -e "\nChecking out prod branch..."
             git checkout prod
             git pull origin prod
-            git log -n 30 --pretty=format:"%h%x09%an%x09%ad%x09%s"
+            git log -n 20 --pretty=format:"%h%x09%an%x09%ad%x09%s"
             echo -e "\n\nShow all branches..."
             git branch
             echo -e "\n\nMerging main into prod..."
             git merge --ff-only main
+            
+            echo "✅ The PR has been successfully merged from $HEAD_BRANCH to $BASE_BRANCH."
           else
             echo "🚫 The PR is not mergeable."
           fi
+
+      # Post a success/failure comment to the PR.
+      - name: Add comment to PR
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: 'Thank you for your pull request!'
