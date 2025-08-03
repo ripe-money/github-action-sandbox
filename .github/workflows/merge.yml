@@ -56,7 +56,7 @@ jobs:
             echo "🔀 Merging the PR... from $HEAD_BRANCH to $BASE_BRANCH"
             # Add your merge command here
             echo -e "\nFetching latest changes..."
-            git fetch origin
+            git fetch origin --unshallow
             echo -e "\nChecking out main branch..."
             git checkout main
             git pull origin main
