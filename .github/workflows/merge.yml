@@ -78,7 +78,6 @@ jobs:
       # Post a success comment to the PR.
       # https://graphite.dev/guides/how-to-post-comment-on-pr-github-actions
       - name: Add success comment to PR
-        if: ${{ success() }}
         uses: thollander/actions-comment-pull-request@v1
         with:
           message: ${{ steps.merge-status.outputs.message }}
