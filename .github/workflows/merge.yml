@@ -40,7 +40,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      # Merge (rebase) the PR if it is allowed.
+      # Merge (rebase) the PR if it is mergeable, and that it's from `main` into `prod`.
       - name: Merge the PR
         id: merge-status
         shell: bash
@@ -65,8 +65,10 @@ jobs:
             git checkout prod
             git pull origin prod
             git log -n 30 --pretty=format:"%h%x09%an%x09%ad%x09%s"
-            echo -e "\nShow all branches..."
+            echo -e "\n\nShow all branches..."
             git branch
+            echo -e "\n\nMerging main into prod..."
+            git merge --ff-only main
           else
             echo "🚫 The PR is not mergeable."
           fi
