@@ -43,6 +43,7 @@ jobs:
           MERGEABLE_STATUS: ${{ fromJson(steps.get-pr-details.outputs.data).mergeable_state }}
           BASE_BRANCH: ${{ fromJson(steps.get-pr-details.outputs.data).base.ref }}
           HEAD_BRANCH: ${{ fromJson(steps.get-pr-details.outputs.data).head.ref }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           if  [ "$MERGEABLE_STATUS" == "clean" ] && \
               [ "$BASE_BRANCH" == "prod" ] && \
