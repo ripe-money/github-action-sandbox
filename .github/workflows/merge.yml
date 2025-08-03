@@ -51,12 +51,12 @@ jobs:
         run: |
           if  [ "$MERGEABLE_STATUS" == "clean" ] && \
               [ "$BASE_BRANCH" == "prod" ] && \
-              [ "$HEAD_BRANCH" == "main.." ];
+              [ "$HEAD_BRANCH" == "main" ];
           then
             echo "🔀 Merging the PR... from $HEAD_BRANCH to $BASE_BRANCH"
             # Add your merge command here
             echo -e "\nFetching latest changes..."
-            git fetch origin --unshallow
+            git fetch origin
             echo -e "\nChecking out main branch..."
             git checkout main
             git pull origin main
