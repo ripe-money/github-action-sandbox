@@ -63,7 +63,7 @@ jobs:
             git branch
             echo -e "\n\nMerging main into prod..."
             git merge --ff-only main
-            git push origin prod
+            # git push origin prod
             echo "✅ The PR has been successfully merged from $HEAD_BRANCH to $BASE_BRANCH."
           else
             echo "🚫 The PR is not mergeable."
