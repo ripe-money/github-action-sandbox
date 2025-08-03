@@ -80,6 +80,5 @@ jobs:
       - name: Add success comment to PR
         uses: thollander/actions-comment-pull-request@v1
         with:
-          message: ${{ steps.merge-status.outputs.message }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          message: '✅ The PR has been successfully merged from `${{ fromJson(steps.get-pr-details.outputs.data).head.ref }}` to `${{ fromJson(steps.get-pr-details.outputs.data).base.ref }}`.'
 
