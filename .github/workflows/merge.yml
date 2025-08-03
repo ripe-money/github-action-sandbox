@@ -1,4 +1,4 @@
-name: Override Merge
+name: Deploy to production
 
 on:
   issue_comment:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   merge_comment:
-    name: Merge PR
+    name: FF-Merge `main` into `prod` on `/merge` comment
     runs-on: ubuntu-latest
     # Run only if
     # 1. The comment was made on a PR.
@@ -62,7 +62,7 @@ jobs:
             git branch
             echo -e "\n\nMerging main into prod..."
             git merge --ff-only main
-
+            git push origin prod
             echo "✅ The PR has been successfully merged from $HEAD_BRANCH to $BASE_BRANCH."
           else
             echo "🚫 The PR is not mergeable."
