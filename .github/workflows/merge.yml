@@ -55,17 +55,17 @@ jobs:
           then
             echo "🔀 Merging the PR... from $HEAD_BRANCH to $BASE_BRANCH"
             # Add your merge command here
-            echo "\nFetching latest changes..."
+            echo "\rFetching latest changes..."
             git fetch origin --unshallow
-            echo "\nChecking out main branch..."
+            echo "\rChecking out main branch..."
             git checkout main
             git pull origin main
             git log -n 30 --pretty=format:"%h%x09%an%x09%ad%x09%s"
-            echo "\nChecking out prod branch..."
+            echo "\rChecking out prod branch..."
             git checkout prod
             git pull origin prod
             git log -n 30 --pretty=format:"%h%x09%an%x09%ad%x09%s"
-            echo "\nShow all branches..."
+            echo "\rShow all branches..."
             git branch
           else
             echo "🚫 The PR is not mergeable."
