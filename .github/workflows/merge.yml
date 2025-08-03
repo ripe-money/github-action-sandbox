@@ -49,7 +49,8 @@ jobs:
           BASE_BRANCH: ${{ fromJson(steps.get-pr-details.outputs.data).base.ref }}
           HEAD_BRANCH: ${{ fromJson(steps.get-pr-details.outputs.data).head.ref }}
         run: |
-          if [ "$MERGEABLE_STATUS" == "clean" ]; then
+          if [ "$MERGEABLE_STATUS" == "clean" ];
+          then
             echo "🔀 Merging the PR... from $HEAD_BRANCH to $BASE_BRANCH"
             # Add your merge command here
             echo "Fetching latest changes..."
